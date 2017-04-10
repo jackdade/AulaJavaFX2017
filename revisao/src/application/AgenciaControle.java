@@ -61,7 +61,7 @@ public class AgenciaControle {
 	    	
 	    }
 	  
-	    }
+	    
 	    @FXML
 	    void onEditar(MouseEvent mouseEvent) {
 	    	if(mouseEvent.getEventType()
