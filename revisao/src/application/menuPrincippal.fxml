@@ -7,15 +7,15 @@
 
 <BorderPane fx:id="bpPrincipal" minHeight="600.0" minWidth="400.0" prefHeight="600.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuControlle">
    <top>
-      <MenuBar prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: #C0C0C0;" BorderPane.alignment="CENTER">
+      <MenuBar prefHeight="31.0" prefWidth="715.0" style="-fx-background-color: #696969;" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Cadastro">
+          <Menu mnemonicParsing="false" style="-fx-background-color: #696969; -fX-text-color: white;" text="Cadastro">
             <items>
-              <MenuItem fx:id="miAgencia" mnemonicParsing="false" onAction="#onAgencia" text="Agencia" />
-                  <MenuItem fx:id="miCliente" mnemonicParsing="false" onAction="#onCliente" text="Cliente" />
+              <MenuItem fx:id="miAgencia" mnemonicParsing="false" onAction="#onAgencia" style="-fx-text-color: white;" text="Agencia" />
+                  <MenuItem fx:id="miCliente" mnemonicParsing="false" onAction="#onCliente" style="-fx-text-color: white;" text="Cliente" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" style="-fx-text-color: withe; -fx-background-color: #696969;" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
