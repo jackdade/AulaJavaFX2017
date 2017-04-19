@@ -1,6 +1,8 @@
 package application;
 
 
+import br.edu.unoesc.revisaoOO.modelo.Agencia;
+import br.edu.unoesc.revisaoOO.modelo.Cliente;
 import br.edu.unoesc.revisaoOO.modelo.Conta;
 import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
 import javafx.collections.FXCollections;
@@ -11,7 +13,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class ContaControle {
@@ -22,10 +23,10 @@ public class ContaControle {
 	    private Button btnNovo;
 
 	    @FXML
-	    private ComboBox<Conta> cbxCliente;
+	    private ComboBox<Cliente> cbxCliente;
 
 	    @FXML
-	    private ComboBox<Conta> cbxAgencia;
+	    private ComboBox<Agencia> cbxAgencia;
 
 	    @FXML
 	    private TextField tfNumero;
@@ -46,9 +47,9 @@ public class ContaControle {
 	    
 	    @FXML
 	    public void initialize(){
-	    	
-	    	tbvNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
-	    	tbvConta.setItems(FXCollections.observableArrayList(SimuladorBD.getContas()));
+			tbvConta.setItems(FXCollections.observableArrayList());
+			cbxAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
+			cbxCliente.setItems(FXCollections.observableArrayList(SimuladorBD.getClientes()));
 	    	novo();
 	    }
 	    
@@ -76,6 +77,8 @@ public class ContaControle {
 	    	
 	    	
 	    	conta.setNumero(tfNumero.getText());
+	    	conta.setAgenciaPreferencial(cbxAgencia.getValue());
+	    	conta.setClientePreferencial(cbxCliente.getValue());
 	    	
 	    	if(editando){
 	    		tbvConta.refresh();
@@ -94,7 +97,8 @@ public class ContaControle {
 	    			.equals(MouseEvent.MOUSE_CLICKED)){
 	    	conta = (Conta) tbvConta.getSelectionModel().getSelectedItem();
 	    	tfNumero.setText(conta.getNumero());
-	    	
+	    	cbxAgencia.setValue(conta.getAgenciaPreferencial());
+	    	cbxCliente.setValue(conta.getClientePreferencial());
 	    	editando = true;
 	    }
 	    }

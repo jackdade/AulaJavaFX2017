@@ -47,19 +47,22 @@ public class MenuControlle {
 
 		}
 	}
-	
+
 	
 	@FXML
 	void onConta(ActionEvent event) {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("cadastroConta.fxml"));
+		loader.setLocation(getClass().getResource("ContaCadastro.fxml"));
 		try {
-			AnchorPane clienteView = (AnchorPane) loader.load();
-			bpPrincipal.setCenter(clienteView);
+			AnchorPane contaView = (AnchorPane) loader.load();
+			bpPrincipal.setCenter(contaView);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 
 		}
 	}
-
+	
+	
 }
+
+

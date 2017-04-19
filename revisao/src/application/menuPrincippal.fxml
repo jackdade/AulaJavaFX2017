@@ -13,7 +13,7 @@
             <items>
               <MenuItem fx:id="miAgencia" mnemonicParsing="false" onAction="#onAgencia" style="-fx-text-color: white;" text="Agencia" />
                   <MenuItem fx:id="miCliente" mnemonicParsing="false" onAction="#onCliente" style="-fx-text-color: white;" text="Cliente" />
-                  <MenuItem fx:id="miConta" mnemonicParsing="false" onAction="#onAgencia" style="-fx-text-color: white;" text="Conta" />
+                  <MenuItem fx:id="miConta" mnemonicParsing="false" onAction="#onConta" style="-fx-text-color: white;" text="Conta" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" style="-fx-text-color: withe; -fx-background-color: #696969;" text="Help">

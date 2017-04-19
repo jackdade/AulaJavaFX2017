@@ -5,10 +5,13 @@ public class Conta {
 	private String numero;
 	private Cliente cliente;
 	private Double saldo;
+	
+	private Agencia agenciaPreferencial;
+	private Cliente clientePreferencial;
 
 	// metodo vaxio,sem parametros de inicializaçõa
 	public Conta() {
-		saldo = 0.0;
+		
 	}
 
 	// Metodo construtpr para criar objetos com valores inicializados
@@ -72,4 +75,23 @@ public class Conta {
 	public String toString() {
 		return this.numero + " " ;
 	}
+
+	public Agencia getAgenciaPreferencial() {
+		return agenciaPreferencial;
+	}
+
+	public void setAgenciaPreferencial(Agencia agenciaPreferencial) {
+		this.agenciaPreferencial = agenciaPreferencial;
+	}
+
+	public Cliente getClientePreferencial() {
+		return clientePreferencial;
+	}
+
+	public void setClientePreferencial(Cliente clientePreferencial) {
+		this.clientePreferencial = clientePreferencial;
+	}
+	
+	
+	
 }
