@@ -2,11 +2,14 @@ package application;
 
 
 
+import br.edu.unoesc.revisaoOO.modelo.Agencia;
 import br.edu.unoesc.revisaoOO.modelo.Cliente;
+import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -35,10 +38,13 @@ public class ClienteControle {
     @FXML
     private Button btnNovo;
     
+    @FXML
+    private ComboBox<Agencia>cbxAgencia;
     
     @FXML
     public void initialize(){
 		lcCliente.setItems(FXCollections.observableArrayList());
+		cbxAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
     	novo();
     }
     
@@ -51,11 +57,13 @@ public class ClienteControle {
     	cliente.setNome(tfnome.getText());
     	cliente.setCpf(tfcpf.getText());
     	cliente.setDataNascimento(dtdatadenascimento.getValue());
+    	cliente.setAgenciaPreferencial(cbxAgencia.getValue());
     	if(editando){
     		lcCliente.refresh();
     	}
     	else{
     			lcCliente.getItems().add(cliente);
+    			SimuladorBD.insert(cliente);
     	}
     	
     	novo();
@@ -89,6 +97,8 @@ public class ClienteControle {
     	tfnome.setText(cliente.getNome());
     	tfcpf.setText(cliente.getCpf());
     	dtdatadenascimento.setValue(cliente.getDataNascimento());
+
+    	cbxAgencia.setValue(cliente.getAgenciaPreferencial());
     	editando = true;
     }
     }

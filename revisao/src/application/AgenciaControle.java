@@ -3,12 +3,15 @@ package application;
 
 
 import br.edu.unoesc.revisaoOO.modelo.Agencia;
+import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class AgenciaControle {
@@ -25,8 +28,14 @@ public class AgenciaControle {
 	    private Button btnSalvar;
 
 	    @FXML
-	    private ListView<Agencia> lvAgencia;
+	    private TableView<Agencia> tbvAgencia;
+	    
+	    @FXML
+	    private TableColumn<Agencia, Number>tbvNumero;
 
+	    @FXML
+	    private TableColumn<Agencia, String>tbvNome;
+	    
 	    @FXML
 	    private Button btnNovo;
 
@@ -40,7 +49,10 @@ public class AgenciaControle {
 	    
 	    @FXML
 	    public void initialize(){
-	    	lvAgencia.setItems(FXCollections.observableArrayList());
+	    	
+	    	tbvNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
+	    	tbvNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+	    	tbvAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));
 	    	novo();
 	    }
 	    
@@ -66,7 +78,7 @@ public class AgenciaControle {
 	    void onEditar(MouseEvent mouseEvent) {
 	    	if(mouseEvent.getEventType()
 	    			.equals(MouseEvent.MOUSE_CLICKED)){
-	    	agencia = (Agencia) lvAgencia.getSelectionModel().getSelectedItem();
+	    	agencia = (Agencia) tbvAgencia.getSelectionModel().getSelectedItem();
 	    	tfNome.setText(agencia.getNome());
 	    	tfNumero.setText(agencia.getNumero());
 	    	
@@ -82,10 +94,11 @@ public class AgenciaControle {
 	    	agencia.setNumero(tfNumero.getText());
 	    	
 	    	if(editando){
-	    		lvAgencia.refresh();
+	    		tbvAgencia.refresh();
 	    	}
 	    	else{
-	    			lvAgencia.getItems().add(agencia);
+	    		SimuladorBD.insert(agencia);	
+	    		tbvAgencia.getItems().add(agencia);
 	    	}
 	    	
 	    	novo();
@@ -93,7 +106,8 @@ public class AgenciaControle {
 	    
 	    @FXML
 	    void onExcluir(ActionEvent event){
-	    	lvAgencia.getItems().remove(agencia);
+	    	SimuladorBD.remover(agencia);
+	    	tbvAgencia.getItems().remove(agencia);
 	    	limparCampos();
 	    }
 	    

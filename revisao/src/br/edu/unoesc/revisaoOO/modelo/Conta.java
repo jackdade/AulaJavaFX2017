@@ -2,7 +2,7 @@ package br.edu.unoesc.revisaoOO.modelo;
 
 public class Conta {
 
-	private Integer numero;
+	private String numero;
 	private Cliente cliente;
 	private Double saldo;
 
@@ -12,10 +12,10 @@ public class Conta {
 	}
 
 	// Metodo construtpr para criar objetos com valores inicializados
-	public Conta(Integer numero, Cliente cliente) {
+	public Conta(String numero, Cliente cliente) {
 		super();
 		this.numero = numero;
-		this.cliente =cliente;
+		this.cliente = cliente;
 		this.saldo = 0.0;
 	}
 
@@ -42,17 +42,22 @@ public class Conta {
 	}
 
 	// get and seteer
-	public Integer getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Integer numero) {
-		this.numero = numero;
-	}
-
+	
 
 	public Double getSaldo() {
 		return saldo;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
 	}
 
 	public Cliente getCliente() {
@@ -63,4 +68,8 @@ public class Conta {
 		this.cliente = cliente;
 	}
 
+	@Override
+	public String toString() {
+		return this.numero + " " ;
+	}
 }
