@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class Controleconta {
@@ -44,7 +45,8 @@ public class Controleconta {
 
 		@FXML
 		public void initialize() {
-			// tbvConta.setItems(FXCollections.observableArrayList());
+			tbvNumero.setCellValueFactory(new PropertyValueFactory<>("numero"));
+			tbvCliente.setCellValueFactory(new PropertyValueFactory<>("nome"));
 			// tbvCliente.getNome(FXCollections.observableArrayList(SimuladorBD.getClientes()));
 
 			cbxAgencia.setItems(FXCollections.observableArrayList(SimuladorBD.getAgencias()));

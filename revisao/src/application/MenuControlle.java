@@ -52,7 +52,7 @@ public class MenuControlle {
 	@FXML
 	void onConta(ActionEvent event) {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("ContaCadastro.fxml"));
+		loader.setLocation(getClass().getResource("clienteForm3.fxml"));
 		try {
 			AnchorPane contaView = (AnchorPane) loader.load();
 			bpPrincipal.setCenter(contaView);
