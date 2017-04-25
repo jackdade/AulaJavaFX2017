@@ -5,7 +5,16 @@ public class Conta {
 	private String numero;
 	private Cliente cliente;
 	private Double saldo;
+	private Double valor;
 	
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
 	private Agencia agenciaPreferencial;
 	private Cliente clientePreferencial;
 
@@ -30,7 +39,7 @@ public class Conta {
 
 	public boolean sacar(Double valor) {
 		if (this.saldo >= valor) {
-			this.saldo -= valor;
+			this.setSaldo(this.getSaldo()-valor);
 			return true;
 		}
 		return false;

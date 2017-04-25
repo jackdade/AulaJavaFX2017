@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MovimentoControle">
+	<children>
+		<Pane prefHeight="491.0" prefWidth="372.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<children>
+				<Label layoutX="23.0" layoutY="119.0" text="VALOR:" />
+				<TextField fx:id="tfValor" cache="true" layoutX="76.0" layoutY="115.0" />
+				<Label layoutX="21.0" layoutY="45.0" text="CONTA" />
+
+				<Label layoutX="43.0" prefHeight="25.0" prefWidth="265.0" text="MOVIMENTO DE DINHEIRO" textOverrun="WORD_ELLIPSIS">
+					<font>
+						<Font name="Century" size="18.0" />
+					</font>
+				</Label>
+				<Button fx:id="btnNovo" layoutX="153.0" layoutY="466.0" mnemonicParsing="false" onAction="#onSalvar" style="-fx-background-color: #a9a9a9a9;" text="SALVAR" />
+				<Label layoutX="21.0" layoutY="85.0" text="TIPO" />
+				<ComboBox fx:id="cbxConta" layoutX="69.0" layoutY="41.0" prefHeight="25.0" prefWidth="195.0" />
+				<TableView fx:id="tbvMovimento" layoutX="-2.0" layoutY="182.0" onMouseClicked="#onEditar" onSort="#onEditar" prefHeight="200.0" prefWidth="372.0">
+					<columns>
+						<TableColumn fx:id="tbvTipo" prefWidth="124.0" text="TIPO" />
+						<TableColumn fx:id="tbvValor" prefWidth="247.0" text="VALOR" />
+					</columns>
+				</TableView>
+				<Label layoutX="245.0" layoutY="395.0" text="SALDO:" />
+				<RadioButton fx:id="rbDeposito" layoutX="70.0" layoutY="85.0" mnemonicParsing="false" onAction="#onRadion1" text="DEPOSITO" />
+				<RadioButton fx:id="rbSaque" layoutX="173.0" layoutY="85.0" mnemonicParsing="false" onAction="#onRadion" text="SAQUE" />
+				<TextField fx:id="tfSaldo" cache="true" editable="false" layoutX="291.0" layoutY="391.0" prefHeight="25.0" prefWidth="58.0" />
+			</children>
+		</Pane>
+	</children>
+</AnchorPane>

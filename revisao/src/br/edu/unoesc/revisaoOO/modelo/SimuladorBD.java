@@ -7,10 +7,12 @@ public class SimuladorBD {
 	private static List<Agencia> agencias;
 	private static List<Cliente> clientes;
 	private static List<Conta> contas;
+	private static List<Movimento> movimentos;
 	static {
 		agencias = new ArrayList<>();
 		clientes = new ArrayList<>();
 		contas = new ArrayList<>();
+		movimentos=new ArrayList<>();
 
 	}
 
@@ -48,6 +50,19 @@ public class SimuladorBD {
 
 	public static List<Conta> getContas() {
 		return contas;
+	}
+	
+	
+	public static void insert(Movimento movimento) {
+		movimentos.add(movimento);
+	}
+
+	public static void remover(Movimento movimento) {
+		movimentos.remove(movimento);
+	}
+
+	public static List<Movimento> getMovimentos() {
+		return movimentos;
 	}
 
 }

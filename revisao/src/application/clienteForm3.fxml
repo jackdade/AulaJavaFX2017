@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controleconta">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ContaControle">
    <children>
       <Pane prefHeight="491.0" prefWidth="372.0" style="-fx-background-color: #DCDCDC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="12.0" layoutY="50.0" text="NUMERO:" />
-            <TextField fx:id="tfNumero" layoutX="65.0" layoutY="46.0" />
+            <TextField fx:id="tfNumeros" layoutX="65.0" layoutY="46.0" onAction="#onSalvar" />
             <Label layoutX="12.0" layoutY="84.0" text="Agencia" />
             <Button fx:id="btnSalvar" layoutX="90.0" layoutY="466.0" mnemonicParsing="false" onAction="#onSalvar" style="-fx-background-color: #a9a9a9a9;" text="Salvar" />
             <Label layoutX="84.0" layoutY="2.0" prefHeight="25.0" prefWidth="161.0" text="Cadastro de Conta" textOverrun="WORD_ELLIPSIS">
@@ -24,7 +24,7 @@
                </font>
             </Label>
             <Button fx:id="btnNovo" layoutX="153.0" layoutY="466.0" mnemonicParsing="false" onAction="#onNovo" style="-fx-background-color: #a9a9a9a9;" text="Novo" />
-            <ComboBox fx:id="cbxCliente" layoutX="67.0" layoutY="120.0" onMouseClicked="#onEditar" prefHeight="25.0" prefWidth="195.0" />
+            <ComboBox fx:id="cbxCliente" layoutX="67.0" layoutY="120.0" prefHeight="25.0" prefWidth="195.0" />
             <Label layoutX="12.0" layoutY="124.0" text="CLIENTE: " />
             <ComboBox fx:id="cbxAgencia" layoutX="67.0" layoutY="80.0" prefHeight="25.0" prefWidth="195.0" />
             <TableView fx:id="tbvConta" layoutX="-2.0" layoutY="182.0" prefHeight="200.0" prefWidth="372.0">

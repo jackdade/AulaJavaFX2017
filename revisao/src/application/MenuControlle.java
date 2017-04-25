@@ -62,6 +62,20 @@ public class MenuControlle {
 		}
 	}
 	
+	@FXML
+	void onMovimento(ActionEvent event) {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("clienteForm4.fxml"));
+		try {
+			AnchorPane movimentoView = (AnchorPane) loader.load();
+			bpPrincipal.setCenter(movimentoView);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+
+		}
+	}
+	
+	
 	
 }
 
