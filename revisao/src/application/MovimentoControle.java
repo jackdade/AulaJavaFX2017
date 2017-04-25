@@ -19,44 +19,35 @@ import javafx.scene.input.MouseEvent;
 public class MovimentoControle {
 	
 	
-
-	
-	
-    @FXML
-    public TextField tfsaldo;
-	
 	@FXML
-    public TextField tfValor;
-	
-
-    @FXML
-    private Button btnSalvar;
+    private TextField tfValor;
 
     @FXML
     private Button btnNovo;
-
-    @FXML
-    public RadioButton rbDeposito;
-
-    @FXML
-    public RadioButton rbSaque;
-    
-    @FXML
-    public TableColumn<Movimento, Number> tbvSaldo;
-    
-    @FXML
-    public Label lbSaldo;
-    
-    @FXML
-    private TextField tfSaldo;
 
     @FXML
     private ComboBox<Conta> cbxConta;
 
     @FXML
     private TableView<Movimento> tbvMovimento;
-    
-    
+
+    @FXML
+    private TableColumn<Movimento, String> tbvTipo;
+
+    @FXML
+    private TableColumn<Movimento, String> tbvValor;
+
+    @FXML
+    private RadioButton rbDeposito;
+
+    @FXML
+    private RadioButton rbSaque;
+
+    @FXML
+    private TextField tfSaldo;
+	
+	
+
     
     private boolean sacando;
     
@@ -65,11 +56,6 @@ public class MovimentoControle {
     
     
 
-    @FXML
-    private TableColumn<Movimento, String> tbvTipo;
-
-    @FXML
-    private TableColumn<Movimento, String> tbvValor;
 
 
     
@@ -162,21 +148,24 @@ public class MovimentoControle {
 		tfSaldo.setText(Double.toString(movimento.getConta().getSaldo()));
 
 		editando = true;
+		
+		rbDeposito.setSelected(false);
+		rbSaque.setSelected(false);
     }
 
     @FXML
 	void onSalvar(ActionEvent event) {
-    	if (editando == true) {
-			novo();
-
-		} else {
+//    	if (editando == true) {
+//			novo();
+//
+//		} else {
 			
 
 			movimento.setConta(cbxConta.getValue());
 
 			if (depositando == true) {
 				// conta.depositar(Double.parseDouble(tfValor.getText()));
-//				movimento.getConta().depositar(Double.parseDouble(tfValor.getText()));
+				movimento.getConta().depositar(Double.parseDouble(tfValor.getText()));
 			} else {
 				// sacando = conta.sacar(Double.parseDouble(tfValor.getText()));
 				sacando = movimento.getConta().sacar(Double.parseDouble(tfValor.getText()));
@@ -184,7 +173,7 @@ public class MovimentoControle {
 
 			movimento.setValor(Double.parseDouble(tfValor.getText()));
 
-			if (depositando || sacando) {
+	//		if (depositando || sacando) {
 
 				if (editando) {
 					tbvMovimento.refresh(); // atualiza
@@ -193,7 +182,7 @@ public class MovimentoControle {
 					SimuladorBD.insert(movimento);
 					tbvMovimento.getItems().add(movimento); // adiciona na
 																// lista
-				}
+			//	}
 			}
 
 			novo();
@@ -201,50 +190,3 @@ public class MovimentoControle {
 	
 	}
     
-    
-	
-    
-
-	public TableColumn<Movimento, Number> getTbvSaldo() {
-		return tbvSaldo;
-	}
-
-	public void setTbvSaldo(TableColumn<Movimento, Number> tbvSaldo) {
-		this.tbvSaldo = tbvSaldo;
-	}
-
-	public TextField getTfsaldo() {
-		return tfsaldo;
-	}
-
-	public void setTfsaldo(TextField tfsaldo) {
-		this.tfsaldo = tfsaldo;
-	}
-
-	public Movimento getMovimento() {
-		return movimento;
-	}
-
-	public void setMovimento(Movimento movimento) {
-		this.movimento = movimento;
-	}
-
-	public Label getLbSaldo() {
-		return lbSaldo;
-	}
-
-	public void setLbSaldo(Label lbSaldo) {
-		this.lbSaldo = lbSaldo;
-	}
-	
-	
-
-
-	
-    
-	
-    
-    
-    
-    
-}

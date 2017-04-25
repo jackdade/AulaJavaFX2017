@@ -7,99 +7,57 @@ import application.MovimentoControle;
 import javafx.scene.control.TextField;
 
 public class Movimento {
+	private Double valor;
 
-		private String tipo;
-		private Double valor;
-		private Conta conta;
-		
-		public Double getValor() {
-			return valor;
-		}
+	private String tipo;
+	
 
-		public void setValor(Double valor) {
-			this.valor = valor;
-		}
+	private Conta conta;
 
-		
-		public Conta getConta() {
-			return conta;
-		}
+	
+	
 
-		public void setConta(Conta conta) {
-			this.conta = conta;
-		}
+	public Movimento() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-		public String getTipo() {
-			return tipo;
-		}
+	public Movimento(Double valor,  Conta conta) {
+		super();
+		this.valor = valor;
+	
+		this.conta = conta;
+	}
 
-		public void setTipo(String tipo) {
-			this.tipo = tipo;
-		}
+	public String getTipo() {
+		return tipo;
+	}
 
-		private List<Conta> contas;
-		
-		private MovimentoControle movimentos;
-		public Double saldo;
-		
-		
-		
-		public Movimento(){
-			this.contas = new ArrayList<>();
-		}
-		
-		public void addConta(Conta conta){
-			contas.add(conta);
-		}
-		
-		public void calcular(){
-			 saldo =0.0d;
-			
-			Double Valor =  Double.parseDouble(movimentos.tfValor.getText());
-			
-			for(Conta conta: contas){
-				saldo += conta.getSaldo();
-		
-			}
-			
-			if(movimentos.rbDeposito.isSelected()){
-				saldo = saldo + Valor;
-			}
-			
-			if(movimentos.rbSaque.isSelected() && saldo <= 0){
-				saldo = saldo - Valor;
-			}
-			
-		//	movimentos.lbSaldo.setText(String.valueOf(saldo));
-			//movimentos.setTfSaldo(String.valueOf(saldo));
-		
-		}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+	public Double getValor() {
+		return valor;
+	}
 
-		public List<Conta> getContas() {
-			return contas;
-		}
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
 
-		public void setContas(List<Conta> contas) {
-			this.contas = contas;
-		}
 
-		public Double getSaldo() {
-			return saldo;
-		}
+	public Conta getConta() {
+		return conta;
+	}
 
-		public void setSaldo(Double saldo) {
-			this.saldo = saldo;
-		}
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+	
+	
+	
 
-		public MovimentoControle getMovimentos() {
-			return movimentos;
-		}
-
-		public void setMovimentos(MovimentoControle movimentos) {
-			this.movimentos = movimentos;
-		}
-		
-		
 		
 
 	

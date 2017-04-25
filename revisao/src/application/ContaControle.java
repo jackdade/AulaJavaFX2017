@@ -79,6 +79,7 @@ public class ContaControle {
 		this.conta.setNumero(tfNumeros.getText());
 		this.conta.setAgenciaPreferencial(cbxAgencia.getValue());
 		this.conta.setClientePreferencial(cbxCliente.getValue());
+		this.conta.setCliente(cbxCliente.getValue());
 		if (editando) {
 			tbvConta.refresh();
 		} else {
@@ -88,8 +89,20 @@ public class ContaControle {
 		novo();
 	}
 
-//	@FXML
-//	void onEditar(MouseEvent mouseEvent) {
+	@FXML
+	void onEditar(MouseEvent mouseEvent) {
+		
+		if (mouseEvent.getEventType().equals(MouseEvent.MOUSE_CLICKED));
+		
+		conta = tbvConta.getSelectionModel().getSelectedItem(); //carregou pra variavel agencia
+		
+		tfNumeros.setText(conta.getNumero());
+		
+    	cbxAgencia.setValue(conta.getAgenciaPreferencial());
+    	cbxCliente.setValue(conta.getClientePreferencial());
+    	
+		editando = true;
+	}
 //		if (mouseEvent.getEventType().equals(MouseEvent.MOUSE_CLICKED)) {
 //			conta = (Conta) tbvConta.getSelectionModel().getSelectedItem();
 //			editando = true;

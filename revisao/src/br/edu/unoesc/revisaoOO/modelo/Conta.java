@@ -1,65 +1,79 @@
 package br.edu.unoesc.revisaoOO.modelo;
 
 public class Conta {
-
+	
 	private String numero;
-	private Cliente cliente;
 	private Double saldo;
 	private Double valor;
 	
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
+	private Cliente cliente;
+	
 	private Agencia agenciaPreferencial;
+	
 	private Cliente clientePreferencial;
 
-	// metodo vaxio,sem parametros de inicializaçõa
-	public Conta() {
-		
-	}
+	
 
-	// Metodo construtpr para criar objetos com valores inicializados
-	public Conta(String numero, Cliente cliente) {
+	public Conta(String numero, Double saldo, Cliente cliente) {
 		super();
 		this.numero = numero;
+		this.saldo = saldo;
 		this.cliente = cliente;
-		this.saldo = 0.0;
 	}
 
-	// metodo depositar,recebe como parametro um valor e soma esse valor no
-	// saldo
+	// metodo contrutor vazio sem aprametros de inicializaï¿½ï¿½o
+	public Conta() {
+		saldo = 0.0;
+
+	}
+
+	// metodo contrutor para criar objetos com valores inicializados
+	public Conta(String numero, Cliente cliente) {
+
+		this();
+		this.numero = numero;
+		this.cliente = cliente;
+
+	}
+
+	/**
+	 * metodo depositar, recebe como parametro um valor e soma esse valor no
+	 * saldo
+	 * 
+	 * @param valor
+	 */
 	public void depositar(Double valor) {
 		this.saldo += valor;
+
+        
 	}
 
+	/**
+	 * metodo sacar, recebe como parametro um valor e diminui esse saldo
+	 * 
+	 * @param valor
+	 */
 	public boolean sacar(Double valor) {
 		if (this.saldo >= valor) {
 			this.setSaldo(this.getSaldo()-valor);
+			
+            
 			return true;
+		}else{
+            
+			return false;
 		}
-		return false;
 	}
+	
+	public void transferir(Conta destino, Double valor) {
 
-	public void transferir(Double valor, Conta destino) {
-		this.sacar(valor);
-		if (this.sacar(valor)) {
-			destino.depositar(valor);
-		}
-
+		this.setSaldo(this.getSaldo()-valor);
+		destino.setSaldo(destino.getSaldo()+valor);
 	}
-
-	// get and seteer
 	
 
-	public Double getSaldo() {
-		return saldo;
-	}
 
+	// gets e sets
 	public String getNumero() {
 		return numero;
 	}
@@ -68,9 +82,7 @@ public class Conta {
 		this.numero = numero;
 	}
 
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
-	}
+	
 
 	public Cliente getCliente() {
 		return cliente;
@@ -80,14 +92,36 @@ public class Conta {
 		this.cliente = cliente;
 	}
 
-	@Override
-	public String toString() {
-		return this.numero + " " ;
+	public Double getSaldo() {
+		return saldo;
 	}
+	
+	
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+		
+	}
+
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
+
+	@Override
+	public String toString(){
+		return this.cliente.getNome()+ " "+this.numero;
+	}
+	
+
 
 	public Agencia getAgenciaPreferencial() {
 		return agenciaPreferencial;
 	}
+
 
 	public void setAgenciaPreferencial(Agencia agenciaPreferencial) {
 		this.agenciaPreferencial = agenciaPreferencial;
@@ -100,7 +134,8 @@ public class Conta {
 	public void setClientePreferencial(Cliente clientePreferencial) {
 		this.clientePreferencial = clientePreferencial;
 	}
-	
-	
-	
+
+
+
 }
+
