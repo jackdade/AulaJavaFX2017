@@ -1,6 +1,15 @@
 package br.edu.unoesc.revisaoOO.modelo;
 
-public class Agencia {
+import java.io.Serializable;
+
+public class Agencia implements Serializable {
+	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1320599973517592837L;
 	private String nome;
 	private String numero;
 	

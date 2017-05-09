@@ -94,6 +94,7 @@ public class AgenciaControle {
 	    	agencia.setNumero(tfNumero.getText());
 	    	
 	    	if(editando){
+	    		SimuladorBD.atualizarAgencias();
 	    		tbvAgencia.refresh();
 	    	}
 	    	else{
