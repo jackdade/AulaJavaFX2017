@@ -2,12 +2,17 @@ package application;
 
 
 
+import java.util.Optional;
+
 import br.edu.unoesc.revisaoOO.modelo.Agencia;
 import br.edu.unoesc.revisaoOO.modelo.SimuladorBD;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -107,9 +112,28 @@ public class AgenciaControle {
 	    
 	    @FXML
 	    void onExcluir(ActionEvent event){
-	    	SimuladorBD.remover(agencia);
+	    	//alerta do java
+	    	Alert alerta = new Alert(AlertType.CONFIRMATION,"Deseja realmente excluir",ButtonType.CANCEL,
+	     ButtonType.OK);
+	    	
+	    	Button okButton = (Button) alerta.getDialogPane().lookupButton(ButtonType.OK);
+	    	
+	    	okButton.setDefaultButton(false);
+	    	
+	    	final Optional<ButtonType>result =alerta.showAndWait();
+	    	
+	    if(result.get()==ButtonType.OK){
 	    	tbvAgencia.getItems().remove(agencia);
+	    	SimuladorBD.remover(agencia);
 	    	limparCampos();
+	    	
+	    }
+	    	
+	    	//
+	    	
+	    	
+	    	
+	    	
 	    }
 	    
 	    
